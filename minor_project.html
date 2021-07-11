@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calculator</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<style>
+		.btn_font{
+			font-size: 30px;	
+		}
+		.body{
+			background-color: #4A1352;
+			animation-name: calcu;
+			animation-duration: 5s;
+			animation-iteration-count: 100;
+		}
+		@keyframes calcu{
+			0%{background-color: #4A1352;}
+			50%{ background-color: #2E1133;}
+			100%{background-color: #09040A;}
+		}
+		.heading{
+			text-align: center;
+		    color: white;
+		    font-family: "Times New Roman", Times, serif;
+		    font-size: 50px;
+		    border: solid grey 5px;
+ 			border-radius: 8px;
+ 			margin: 5px;
+ 			padding: 10px;
+ 			border-color: whitesmoke;
+ 			height: auto;
+    		width: 390px;
+    		margin-left: 550px;
+		}
+		.history{
+			border: 5px solid grey;
+			font-family: "Times New Roman", Times, serif;
+ 			border-radius: 50px;
+ 			border-width: 2.5px;
+ 			margin: 5px;
+ 			margin-left: -16px;
+ 			padding: 10px;
+ 			border-color: black;
+ 			height: 56px;
+    		width: 88px;
+    	}
+		
+	</style>
+</head>
+<body class="body">
+	<h1 class="heading">Verzeo Calculator</h1>
+	
+	<div class="container" style="padding:30px; border: 4px solid grey; margin-top: 50px; background: #A0A0A0; box-shadow: 15px 15px #525252; border-radius: 10px">
+		<div class="row">
+			<div class="col-lg-12" style="padding: 0px">
+			<input type="text" name="calculation" id="calculation" class="form-control" style="padding: 10px; font-size:30px; height: 50px">
+			</div>
+		</div>
+		
+		<div class="row">
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="One" class="btn btn-primary btn-block btn_font" onclick="UserClickButton('1')">1</button>
+			</div>
+		
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Two" class="btn btn-primary btn-block btn_font
+				" onclick="UserClickButton('2')">2</button>
+			</div>
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Three" class="btn btn-primary btn-block btn_font" onclick="UserClickButton('3')">3</button>
+			</div>
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Add" class="btn btn-success btn-block btn_font" onclick="UserClickButton('+')">+</button>
+			</div>
+
+		</div>
+
+		<div class="row">
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="four" class="btn btn-primary btn-block btn_font" onclick="UserClickButton('4')">4</button>
+			</div>
+		
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Five" class="btn btn-primary btn-block btn_font
+				" onclick="UserClickButton('5')">5</button>
+			</div>
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Six" class="btn btn-primary btn-block btn_font" onclick="UserClickButton('6')">6</button>
+			</div>
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Minus" class="btn btn-success btn-block btn_font" onclick="UserClickButton('-')">-</button>
+			</div>
+
+		</div>
+		
+		<div class="row">
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Seven" class="btn btn-primary btn-block btn_font" onclick="UserClickButton('7')">7</button>
+			</div>
+		
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Eight" class="btn btn-primary btn-block btn_font" onclick="UserClickButton('8')">8</button>
+			</div>
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Nine" class="btn btn-primary btn-block btn_font" onclick="UserClickButton('9')">9</button>
+			</div>
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Multiply" class="btn btn-success btn-block btn_font" onclick="UserClickButton('*')">*</button>
+			</div>
+
+		</div>
+
+		<div class="row">
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="dot" class="btn btn-primary btn-block btn_font" onclick="UserClickButton('.')">.</button>
+			</div>
+		
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Zero" class="btn btn-primary btn-block btn_font
+				" onclick="UserClickButton('0')">0</button>
+			</div>
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Equal" class="btn btn-primary btn-block btn_font" onclick="CalculateValue()">=</button>
+			</div>
+			
+			<div class="col-xs-3" style="padding: 0px">
+				<button id="Divide" class="btn btn-success btn-block btn_font" onclick="UserClickButton('/')">/</button>
+			</div>
+		</div>
+			
+		<div class="row">
+			<div class="col-lg-9" style="padding: 0px">
+				<button id="Clear" class="btn btn-danger btn-block" onclick="ClearData()">CLEAR</button>
+			</div>
+			<div class="col-lg-3" style="padding: 0px">
+				<button id="Backspace" class="btn btn-success btn-block" onclick="BackData()">BACKSPACE</button>
+			</div>
+		</div>
+	
+		<div class="row">
+	        <div class="col-lg-12">
+	            <h2 class="history">LOG</h2>
+	        </div>
+	        <div class="col-lg-12" id="history_log"></div>
+	    </div>
+	</div>
+
+
+	<script>
+		var text_box = document.getElementById("calculation");
+		var historyData = [];
+		var expressionData = "";
+		var resultData = "";
+		
+		function UserClickButton(input) {
+		  var oldinput = text_box.value;
+		  var newinput = oldinput + input;
+		  expressionData = newinput;
+		  text_box.value = newinput;
+		}
+		function CalculateValue() {
+		  console.log("Clicked Button");
+		  var input = text_box.value;
+		  input = input.replace('"', "").replace("'", "");
+		  var result = eval(input);
+		  resultData = result;
+		  historyData.push({ expression: expressionData, result: resultData });
+		  Logdata();
+		  resultData = "";
+		  expressionData = "";
+		  text_box.value = result;
+		}
+		function ClearData() {
+		  text_box.value = "";
+		}
+
+		function Logdata() {
+		  var log = document.getElementById("history_log");
+		  var string = "";
+		  for (var key in historyData) {
+		    string +="" +historyData[key]["expression"] +" = " +historyData[key]["result"] +"<br>";
+		  }
+
+		  log.innerHTML = string;
+		}
+		
+		function BackData(){
+			var value = document.getElementById("calculation").value;
+    		document.getElementById("calculation").value = value.substr(0, value.length - 1);
+		}
+	</script>
+
+</body>
+</html>
